@@ -285,3 +285,78 @@ int main() {
     obj.display();
     return 0;
 }
+//q10
+#include <iostream>
+using namespace std;
+
+class Person {
+protected:
+    string name;
+    string address;
+
+public:
+    void setPerson(string n, string a) {
+        name = n;
+        address = a;
+    }
+
+    void showPerson() {
+        cout << "Name: " << name << endl;
+        cout << "Address: " << address << endl;
+    }
+};
+
+class Staff : virtual public Person {
+protected:
+    int employee_id;
+    string department;
+
+public:
+    void setStaff(int id, string dept) {
+        employee_id = id;
+        department = dept;
+    }
+
+    void showStaff() {
+        cout << "Employee ID: " << employee_id << endl;
+        cout << "Department: " << department << endl;
+    }
+};
+
+class Student : virtual public Person {
+protected:
+    int student_id;
+    char grade;
+
+public:
+    void setStudent(int id, char g) {
+        student_id = id;
+        grade = g;
+    }
+
+    void showStudent() {
+        cout << "Student ID: " << student_id << endl;
+        cout << "Grade: " << grade << endl;
+    }
+};
+
+class TeachingAssistant : public Staff, public Student {
+public:
+    void display() {
+        showPerson();
+        showStaff();
+        showStudent();
+    }
+};
+
+int main() {
+    TeachingAssistant ta;
+
+    ta.setPerson("Divjyot", "Punjab");
+    ta.setStaff(101, "CSE");
+    ta.setStudent(202, 'A');
+
+    ta.display();
+
+    return 0;
+}
